@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Module4
+namespace M4
 {
     public class Module4
     {
@@ -73,6 +73,7 @@ namespace Module4
         public void Task_3_C(int[] array, out int maxItem, out int minItem, out int sumOfItems)
         {
             throw new NotImplementedException();
-        }
+        }       
+
     }
 }

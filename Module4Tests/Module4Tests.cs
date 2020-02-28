@@ -1,7 +1,7 @@
 ﻿using NUnit.Framework;
 using System;
 
-namespace Module4.Tests
+namespace M4
 {
     [TestFixture]
     public class Module4Tests
