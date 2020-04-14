@@ -6,7 +6,7 @@ namespace M4
     {
         static void Main(string[] args)
         {
-
+           
         }
 
 
@@ -73,7 +73,37 @@ namespace M4
         public void Task_3_C(int[] array, out int maxItem, out int minItem, out int sumOfItems)
         {
             throw new NotImplementedException();
-        }       
+        }
 
+        public (int, int, int) Task_4_A((int, int, int) numbers)
+        {
+            throw new NotImplementedException();
+        }
+
+        public (double, double) Task_4_B(double radius)
+        {
+            throw new NotImplementedException();
+        }
+
+        public (int, int, int) Task_4_C(int[] array)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Task_5(int[] array)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Task_6(int[] array, SortDirection direction)
+        {
+            throw new NotImplementedException();
+
+        }        
+
+        public  double Task_7(Func<double, double> func, double x1, double x2, double e, double result = 0)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
