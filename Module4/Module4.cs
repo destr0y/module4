@@ -13,31 +13,31 @@ namespace M4
 
         public int Task_1_A(int[] array)
         {
-            if (array == null || array.Length == 0) throw new ArgumentNullException();
+            if (array == null || array.Length == 0) throw new ArgumentNullException("array");
             return array.Max();
         }
 
         public int Task_1_B(int[] array)
         {
-            if (array == null || array.Length == 0) throw new ArgumentNullException();
+            if (array == null || array.Length == 0) throw new ArgumentNullException("array");
             return array.Min();
         }
 
         public int Task_1_C(int[] array)
         {
-            if (array == null || array.Length == 0) throw new ArgumentNullException();
+            if (array == null || array.Length == 0) throw new ArgumentNullException("array");
             return array.Sum();
         }
 
         public int Task_1_D(int[] array)
         {
-            if (array == null || array.Length == 0) throw new ArgumentNullException();
+            if (array == null || array.Length == 0) throw new ArgumentNullException("array");
             return array.Max() - array.Min();
         }
 
         public void Task_1_E(int[] array)
         {
-            if (array == null || array.Length == 0) throw new ArgumentNullException();
+            if (array == null || array.Length == 0) throw new ArgumentNullException("array");
             
             var max = array.Max();
             var min = array.Min();
@@ -94,7 +94,7 @@ namespace M4
 
         public void Task_3_B(double radius, out double length, out double square)
         {
-            if (radius < 0) throw new ArgumentException();
+            if (radius < 0) throw new ArgumentException("radius");
             
             length = 2 * Math.PI * radius;
             square = Math.PI * Math.Pow(radius,2);
@@ -102,7 +102,7 @@ namespace M4
 
         public void Task_3_C(int[] array, out int maxItem, out int minItem, out int sumOfItems)
         {
-            if (array == null || array.Length == 0) throw new ArgumentNullException();
+            if (array == null || array.Length == 0) throw new ArgumentNullException("array");
             
             maxItem = array.Max();
             minItem = array.Min();
@@ -111,12 +111,16 @@ namespace M4
 
         public (int, int, int) Task_4_A((int, int, int) numbers)
         {
-            return (numbers.Item1 += 10, numbers.Item2 += 10, numbers.Item3 += 10);
+            var a = numbers.Item1;
+            var b = numbers.Item2;
+            var c = numbers.Item3;
+            
+            return (a += 10, b += 10, c += 10);
         }
 
         public (double, double) Task_4_B(double radius)
         {
-            if (radius < 0) throw new ArgumentException();
+            if (radius < 0) throw new ArgumentException("Radius should be more than 0", "radius");
             
             var length = 2 * Math.PI * radius;
             var square = Math.PI * Math.Pow(radius,2);
@@ -126,21 +130,21 @@ namespace M4
 
         public (int, int, int) Task_4_C(int[] array)
         {
-            if (array == null || array.Length == 0) throw new ArgumentNullException();
+            if (array == null || array.Length == 0) throw new ArgumentNullException("array");
             
             return (array.Min(), array.Max(), array.Sum());
         }
 
         public void Task_5(int[] array)
         {
-            if (array == null || array.Length == 0) throw new ArgumentNullException();
+            if (array == null || array.Length == 0) throw new ArgumentNullException("array");
             for (int i = 0; i < array.Length; i++)
                 array[i] += 5;
         }
 
         public void Task_6(int[] array, SortDirection direction)
         {
-            if (array == null || array.Length == 0) throw new ArgumentNullException();
+            if (array == null || array.Length == 0) throw new ArgumentNullException("array");
             
             Array.Sort(array);
 
@@ -151,7 +155,7 @@ namespace M4
         public  double Task_7(Func<double, double> func, double x1, double x2, double e, double result = 0)
         {
             if (func == null)
-                throw new ArgumentNullException();
+                throw new ArgumentNullException("func");
             
             double c = (x2 + x1) / 2.0f;
             
