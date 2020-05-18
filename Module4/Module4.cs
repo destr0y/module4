@@ -111,11 +111,11 @@ namespace M4
 
         public (int, int, int) Task_4_A((int, int, int) numbers)
         {
-            var a = numbers.Item1;
-            var b = numbers.Item2;
-            var c = numbers.Item3;
+            var a = numbers.Item1 + 10;
+            var b = numbers.Item2 + 10;
+            var c = numbers.Item3 + 10;
             
-            return (a += 10, b += 10, c += 10);
+            return (a, b, c);
         }
 
         public (double, double) Task_4_B(double radius)
