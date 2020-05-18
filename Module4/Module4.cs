@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace M4
 {
@@ -6,104 +7,161 @@ namespace M4
     {
         static void Main(string[] args)
         {
-           
+            // Some code
         }
 
 
         public int Task_1_A(int[] array)
         {
-            throw new NotImplementedException();
+            if (array == null || array.Length == 0) throw new ArgumentNullException();
+            return array.Max();
         }
 
         public int Task_1_B(int[] array)
         {
-            throw new NotImplementedException();
+            if (array == null || array.Length == 0) throw new ArgumentNullException();
+            return array.Min();
         }
 
         public int Task_1_C(int[] array)
         {
-            throw new NotImplementedException();
+            if (array == null || array.Length == 0) throw new ArgumentNullException();
+            return array.Sum();
         }
 
         public int Task_1_D(int[] array)
         {
-            throw new NotImplementedException();
+            if (array == null || array.Length == 0) throw new ArgumentNullException();
+            return array.Max() - array.Min();
         }
 
         public void Task_1_E(int[] array)
         {
-            throw new NotImplementedException();
+            if (array == null || array.Length == 0) throw new ArgumentNullException();
+            
+            var max = array.Max();
+            var min = array.Min();
+            
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (i % 2 == 0)
+                    array[i] += max;
+                else 
+                    array[i] -= min;
+            }
         }
 
         public int Task_2(int a, int b, int c)
         {
-            throw new NotImplementedException();
+            return a + b + c;
         }
 
         public int Task_2(int a, int b)
         {
-            throw new NotImplementedException();
+            return a + b;
         }
 
         public double Task_2(double a, double b, double c)
         {
-            throw new NotImplementedException();
+            return a + b + c;
         }
 
         public string Task_2(string a, string b)
         {
-            throw new NotImplementedException();
+            return string.Concat(a, b);
         }
 
         public int[] Task_2(int[] a, int[] b)
         {
-            throw new NotImplementedException();
+            // Меняем массивы, чтобы а всегда был массивом с большей размерностью
+            if (b.Length > a.Length)
+                (a, b) = (b, a);
+            
+            for (int i = 0; i < b.Length; i++)
+            {
+                a[i] += b[i];
+            }
+
+            return a;
         }
 
         public void Task_3_A(ref int a, ref int b, ref int c)
         {
-            throw new NotImplementedException();
+            a += 10;
+            b += 10;
+            c += 10;
         }
 
         public void Task_3_B(double radius, out double length, out double square)
         {
-            throw new NotImplementedException();
+            if (radius < 0) throw new ArgumentException();
+            
+            length = 2 * Math.PI * radius;
+            square = Math.PI * Math.Pow(radius,2);
         }
 
         public void Task_3_C(int[] array, out int maxItem, out int minItem, out int sumOfItems)
         {
-            throw new NotImplementedException();
+            if (array == null || array.Length == 0) throw new ArgumentNullException();
+            
+            maxItem = array.Max();
+            minItem = array.Min();
+            sumOfItems = array.Sum();
         }
 
         public (int, int, int) Task_4_A((int, int, int) numbers)
         {
-            throw new NotImplementedException();
+            return (numbers.Item1 += 10, numbers.Item2 += 10, numbers.Item3 += 10);
         }
 
         public (double, double) Task_4_B(double radius)
         {
-            throw new NotImplementedException();
+            if (radius < 0) throw new ArgumentException();
+            
+            var length = 2 * Math.PI * radius;
+            var square = Math.PI * Math.Pow(radius,2);
+
+            return (length, square);
         }
 
         public (int, int, int) Task_4_C(int[] array)
         {
-            throw new NotImplementedException();
+            if (array == null || array.Length == 0) throw new ArgumentNullException();
+            
+            return (array.Min(), array.Max(), array.Sum());
         }
 
         public void Task_5(int[] array)
         {
-            throw new NotImplementedException();
+            if (array == null || array.Length == 0) throw new ArgumentNullException();
+            for (int i = 0; i < array.Length; i++)
+                array[i] += 5;
         }
 
         public void Task_6(int[] array, SortDirection direction)
         {
-            throw new NotImplementedException();
+            if (array == null || array.Length == 0) throw new ArgumentNullException();
+            
+            Array.Sort(array);
 
+            if (direction == SortDirection.Descending)
+                Array.Reverse(array);
         }        
 
         public  double Task_7(Func<double, double> func, double x1, double x2, double e, double result = 0)
         {
-            throw new NotImplementedException();
+            if (func == null)
+                throw new ArgumentNullException();
+            
+            double c = (x2 + x1) / 2.0f;
+            
+            if (func(c) == 0 || x1 + x2 < e) 
+                return c;
+            
+            if (func(c) * func(x1) < 0)
+                return Task_7(func, x1, c, e, result);
+            else
+                return Task_7(func, c, x2, e, result);
         }
     }
 }
